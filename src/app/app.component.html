@@ -1,0 +1,67 @@
+<!-- <ul>
+  <h1 class="dflex justify-content-center">Getting Student Data From Api</h1>
+  <li *ngFor="let p of ourData">
+  {{p.student_id}} 
+  {{p.First_Name}} 
+  {{p.Last_Name}}  
+  {{p.Department}} 
+  </li>
+</ul> -->
+
+<br>
+<br>
+<div class="container">
+<form #studentForm="ngForm" (ngSubmit)="getStudentData(studentForm.value)">
+  <input type="text" class="form-control" name="First_Name" ngModel placeholder="Enter First Name">
+  <br><br>
+  
+  <input type="text" class="form-control" name="Last_Name" ngModel placeholder="Enter Last Name">
+  <br><br>
+  
+  <input type="text" class="form-control" name="Department" ngModel placeholder="Enter Department">
+  <br><br>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+<table class="table table-dark table-group-divider">
+  <thead>
+    <tr>
+      <th colspan="5" style="text-align: center; font-size: 40px;">Student Data</th>
+    </tr>
+    <tr>
+    <th>Student ID</th>
+  <th>First Name</th>
+  <th> Last Name </th>
+  <th>Department</th>
+  <th>Action</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let p of ourData">
+    <tr>
+      <td>{{p.student_id}}</td>
+    <td>{{p.First_Name}}</td>
+    <td>{{p.Last_Name}}</td>
+    <td>{{p.Department}}</td>
+    <td>
+      <button (click)="setUpdateStudent(p)" type="button" class="btn-light mr-1">Update</button>
+      <button (click)="DeleteStudent(p)" type="button" class="btn-light mr-1">Delete</button>
+    </td>
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+<div *ngIf="selectedStudent.student_id">
+  <h2>Update Student</h2>
+  <form (ngSubmit)="updateStudent()">
+    <!-- Your form fields for updating student data -->
+    <input type="text" [(ngModel)]="selectedStudent.student_id" disabled name="student_id" >
+          <input type="text" [(ngModel)]="selectedStudent.First_Name"  name="First_Name" placeholder="Enter First Name">
+          <input type="text" [(ngModel)]="selectedStudent.Last_Name"  name="Last_Name" placeholder="Enter Last Name">
+          <input type="text" [(ngModel)]="selectedStudent.Department"  name="Department" placeholder="Enter Department">
+    <button type="submit">Update</button>
+  </form>
+</div>
+
+
+  
